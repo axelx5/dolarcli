@@ -85,7 +85,7 @@ func main() {
 		}
 	})
 
-	data = append(data, []interface{}{"Diario El Cronista", docCompVal, docVentVal, docVentVal - docCompVal})
+	data = append(data, []interface{}{"Diario El Cronista (Blue)", docCompVal, docVentVal, docVentVal - docCompVal})
 
 	// http://www.ambito.com/economia/mercados/monedas/dolar/
 	// #contenido > div.row > div:nth-child(2) > div > div > div.cierreAnterior > big
@@ -116,7 +116,7 @@ func main() {
 		}
 	})
 
-	data = append(data, []interface{}{"Diario Ambito", docCompVal, docVentVal, docVentVal - docCompVal})
+	data = append(data, []interface{}{"Diario Ambito (Blue)", docCompVal, docVentVal, docVentVal - docCompVal})
 
 	//https://www.oficialhoy.com.ar/
 	// #Blog1 > article > div.post-entry > div > div:nth-child(2) > center:nth-child(3) > table:nth-child(19) > tbody > tr:nth-child(1) > td:nth-child(3)
@@ -268,6 +268,133 @@ func main() {
 	})
 
 	data = append(data, []interface{}{"Banco Ciudad", docCompVal, docVentVal, docVentVal - docCompVal})
+
+	//https://www.oficialhoy.com.ar/
+	// #Blog1 > article > div.post-entry > div > div:nth-child(2) > center:nth-child(3) > table:nth-child(19) > tbody > tr:nth-child(1) > td:nth-child(3)
+	docInfoDolarHoy, err := goquery.NewDocument("https://www.infodolar.com/")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	docInfoDolarHoy.Find("#ctl00_PlaceHolderLeftColumn_GridViewDolar > tbody > tr:nth-child(13) > td:nth-child(2)").Each(func(index int, item *goquery.Selection) {
+		docCompra := strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(item.Text(), " ", "", -1), "$", "", -1), ",", ".", -1), "\u00a0", "", -1), "\n", "", -1)
+		_docCompVal, err := strconv.ParseFloat(docCompra, 64)
+
+		if err != nil {
+			log.Fatal(err)
+		} else {
+			docCompVal = _docCompVal
+		}
+	})
+
+	docInfoDolarHoy.Find("#ctl00_PlaceHolderLeftColumn_GridViewDolar > tbody > tr:nth-child(13) > td:nth-child(3)").Each(func(index int, item *goquery.Selection) {
+		docVenta := strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(item.Text(), " ", "", -1), "$", "", -1), ",", ".", -1), "\u00a0", "", -1), "\n", "", -1)
+		_docVentVal, err := strconv.ParseFloat(docVenta, 64)
+
+		if err != nil {
+			log.Fatal(err)
+		} else {
+			docVentVal = _docVentVal
+		}
+	})
+
+	data = append(data, []interface{}{"Banco de Cordoba", docCompVal, docVentVal, docVentVal - docCompVal})
+
+	docInfoDolarHoy.Find("#ctl00_PlaceHolderLeftColumn_GridViewDolar > tbody > tr:nth-child(3) > td:nth-child(2)").Each(func(index int, item *goquery.Selection) {
+		docCompra := strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(item.Text(), " ", "", -1), "$", "", -1), ",", ".", -1), "\u00a0", "", -1), "\n", "", -1)
+		_docCompVal, err := strconv.ParseFloat(docCompra, 64)
+
+		if err != nil {
+			log.Fatal(err)
+		} else {
+			docCompVal = _docCompVal
+		}
+	})
+
+	docInfoDolarHoy.Find("#ctl00_PlaceHolderLeftColumn_GridViewDolar > tbody > tr:nth-child(3) > td:nth-child(3)").Each(func(index int, item *goquery.Selection) {
+		docVenta := strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(item.Text(), " ", "", -1), "$", "", -1), ",", ".", -1), "\u00a0", "", -1), "\n", "", -1)
+		_docVentVal, err := strconv.ParseFloat(docVenta, 64)
+
+		if err != nil {
+			log.Fatal(err)
+		} else {
+			docVentVal = _docVentVal
+		}
+	})
+
+	data = append(data, []interface{}{"Banco Provincia", docCompVal, docVentVal, docVentVal - docCompVal})
+
+	docInfoDolarHoy.Find("#ctl00_PlaceHolderLeftColumn_GridViewDolar > tbody > tr:nth-child(6) > td:nth-child(2)").Each(func(index int, item *goquery.Selection) {
+		docCompra := strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(item.Text(), " ", "", -1), "$", "", -1), ",", ".", -1), "\u00a0", "", -1), "\n", "", -1)
+		_docCompVal, err := strconv.ParseFloat(docCompra, 64)
+
+		if err != nil {
+			log.Fatal(err)
+		} else {
+			docCompVal = _docCompVal
+		}
+	})
+
+	docInfoDolarHoy.Find("#ctl00_PlaceHolderLeftColumn_GridViewDolar > tbody > tr:nth-child(6) > td:nth-child(3)").Each(func(index int, item *goquery.Selection) {
+		docVenta := strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(item.Text(), " ", "", -1), "$", "", -1), ",", ".", -1), "\u00a0", "", -1), "\n", "", -1)
+		_docVentVal, err := strconv.ParseFloat(docVenta, 64)
+
+		if err != nil {
+			log.Fatal(err)
+		} else {
+			docVentVal = _docVentVal
+		}
+	})
+
+	data = append(data, []interface{}{"Banco Supervielle", docCompVal, docVentVal, docVentVal - docCompVal})
+
+	docInfoDolarHoy.Find("#ctl00_PlaceHolderLeftColumn_GridViewDolar > tbody > tr:nth-child(10) > td:nth-child(2)").Each(func(index int, item *goquery.Selection) {
+		docCompra := strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(item.Text(), " ", "", -1), "$", "", -1), ",", ".", -1), "\u00a0", "", -1), "\n", "", -1)
+		_docCompVal, err := strconv.ParseFloat(docCompra, 64)
+
+		if err != nil {
+			log.Fatal(err)
+		} else {
+			docCompVal = _docCompVal
+		}
+	})
+
+	docInfoDolarHoy.Find("#ctl00_PlaceHolderLeftColumn_GridViewDolar > tbody > tr:nth-child(10) > td:nth-child(3)").Each(func(index int, item *goquery.Selection) {
+		docVenta := strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(item.Text(), " ", "", -1), "$", "", -1), ",", ".", -1), "\u00a0", "", -1), "\n", "", -1)
+		_docVentVal, err := strconv.ParseFloat(docVenta, 64)
+
+		if err != nil {
+			log.Fatal(err)
+		} else {
+			docVentVal = _docVentVal
+		}
+	})
+
+	data = append(data, []interface{}{"Banco ICBC", docCompVal, docVentVal, docVentVal - docCompVal})
+
+	docInfoDolarHoy.Find("#ctl00_PlaceHolderLeftColumn_GridViewDolar > tbody > tr:nth-child(15) > td:nth-child(2)").Each(func(index int, item *goquery.Selection) {
+		docCompra := strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(item.Text(), " ", "", -1), "$", "", -1), ",", ".", -1), "\u00a0", "", -1), "\n", "", -1)
+		_docCompVal, err := strconv.ParseFloat(docCompra, 64)
+
+		if err != nil {
+			log.Fatal(err)
+		} else {
+			docCompVal = _docCompVal
+		}
+	})
+
+	docInfoDolarHoy.Find("#ctl00_PlaceHolderLeftColumn_GridViewDolar > tbody > tr:nth-child(15) > td:nth-child(3)").Each(func(index int, item *goquery.Selection) {
+		docVenta := strings.Replace(strings.Replace(strings.Replace(strings.Replace(strings.Replace(item.Text(), " ", "", -1), "$", "", -1), ",", ".", -1), "\u00a0", "", -1), "\n", "", -1)
+		_docVentVal, err := strconv.ParseFloat(docVenta, 64)
+
+		if err != nil {
+			log.Fatal(err)
+		} else {
+			docVentVal = _docVentVal
+		}
+	})
+
+	data = append(data, []interface{}{"Banco Columbia", docCompVal, docVentVal, docVentVal - docCompVal})
 
 	table := simpletable.New()
 
