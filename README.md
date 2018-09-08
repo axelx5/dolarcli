@@ -32,3 +32,5 @@ Para instalar el mismo es necesario ejecutar el siguiente comando:
 
     go install
     
+**NOTA PARA DEVS**
+Los patrones de diseño y buenas practicas no las van a ver al menos al momento de haber hecho este commit pero proximamente voy a trabajar en acomodar el caos, momentaneamente el caos principal es saber cuanto sale el dolar :D
