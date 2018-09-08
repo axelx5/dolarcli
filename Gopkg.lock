@@ -10,6 +10,14 @@
   version = "v1.4.1"
 
 [[projects]]
+  branch = "master"
+  digest = "1:e409a3c2e9b1195cfaf692d1eb4c75ba4e12fe1fd30146da75fc25ca976a31d8"
+  name = "github.com/alexeyco/simpletable"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "1fa9009f10802febcb49056af26900ccb4db5c11"
+
+[[projects]]
   digest = "1:66b3310cf22cdc96c35ef84ede4f7b9b370971c4025f394c89a2638729653b11"
   name = "github.com/andybalholm/cascadia"
   packages = ["."]
@@ -31,6 +39,9 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  input-imports = ["github.com/PuerkitoBio/goquery"]
+  input-imports = [
+    "github.com/PuerkitoBio/goquery",
+    "github.com/alexeyco/simpletable",
+  ]
   solver-name = "gps-cdcl"
   solver-version = 1
